@@ -1,0 +1,29 @@
+* {
+  /* border: 1px solid red; */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  margin: 0 auto;
+
+  gap: 24px;
+  min-height: 100vh;
+
+  background-color: var(--background-1);
+  line-height: 1.6;
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-size: 14px;
+}
