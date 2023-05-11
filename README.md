@@ -27,6 +27,9 @@ There are libraries below which were used in the App:
 
 # Demo
 
+![demo](https://github.com/korvenhasta/real-estate-house-listing/assets/51381521/c3450775-3d53-49bf-8ee3-0ae6c519a980)
+
+
 # How to start the App
 
 ```sh
