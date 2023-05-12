@@ -189,7 +189,6 @@
     return new Promise(resolve => {
         var reader = new FileReader();
         reader.onloadend = function() {
-          console.log('RESULT', reader.result)
           resolve(reader.result)
         }
         reader.readAsDataURL(file);    
