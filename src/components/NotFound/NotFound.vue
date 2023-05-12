@@ -1,7 +1,7 @@
 <template>
   <!-- Displaying image and message when there is nothing to show to the user. -->
   <div class="notFound">
-    <img class="searchNothingFoundImg" src="@/assets/img_empty_houses@3x.png"/>
+    <img class="searchNothingFoundImg" src="@/assets/nothing_found.png"/>
     <p class="bodyMessage">No results found.<br>Please try another keyword.</p>
   </div>
 </template>
@@ -21,7 +21,7 @@
   }
 
   .searchNothingFoundImg {
-    width: 225px;
+    width: 100px;
   }
 
   .bodyMessage {
@@ -33,9 +33,6 @@
   }
 
   @media screen and (min-width: 1024px) {
-    .searchNothingFoundImg {
-      width: 350px;
-    }
 
     .bodyMessage {
       font-size: var(--empty-message);
