@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { useRoute } from 'vue-router'
-import { deleteHouse, getHouses, postHouse, updateHouse, uploadImage } from '../services/api'
+import { deleteHouse, getHouses, postHouse, updateHouse } from '../services/api'
 
 const sortingFunctions = {
   price: (a, b) => {
@@ -27,15 +27,10 @@ export const usePropertiesStore = defineStore({
     },
     async createHouse(house) {
       const savedHouse = await postHouse(house)
-      // await uploadImage(image, savedHouse.id)
-
       return savedHouse
     },
-    async updateHouse(house, image, id) {
+    async updateHouse(house, id) {
       await updateHouse(house, id)
-      if (image) {
-        await uploadImage(image, id)
-      }
       // Refetch the properties to update the state.
       // It would be better to fetch only the property that we changed, but the API can't do that.
       await this.fill()

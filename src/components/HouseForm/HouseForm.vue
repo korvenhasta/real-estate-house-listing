@@ -121,21 +121,6 @@
   import FileInput from '@/components/atoms/FileInput/FileInput.vue'
 
   const props = defineProps({
-    // values: {
-    //   streetName: String, 
-    //   houseNumber: String,
-    //   numberAddition: String,
-    //   zip: String,
-    //   city: String, 
-    //   image: String,
-    //   price: String,
-    //   size: String,
-    //   hasGarage: String,
-    //   bedrooms: String,
-    //   bathrooms: String,
-    //   constructionYear: String,
-    //   description: String
-    // },
     values: {
       image: String,
       price: Number,
@@ -202,7 +187,20 @@
     // Exclude the preview image data and actual file.
     // The reason for this that the file upload requires a separate request.
     const {image, file, streetName, houseNumber, ...formData} = house; // eslint-disable-line no-unused-vars
-    const houseImageFile = await encodeImageFileAsURL(file);
+    console.log('image: ', image)
+    console.log('file: ', file)
+
+    let houseImageFile
+    // We need to determine whether to encode the image as base64 or not
+    if (file === null) {
+      // Edit. Image is already a base64 string. File is a null. In that case no encoding necessary.
+      houseImageFile = image
+    }
+    else {
+      // Create. Image is a blob. File is a file object. We need to encode it as a base64.
+      houseImageFile = await encodeImageFileAsURL(file);
+    }
+
     // Call the handleSubmit function provided by the parent. 
     // This could be create a house or edit the house depending on the page.
     props.handleSubmit({...formData, image: houseImageFile, location: {...formData.location, street: `${streetName} ${houseNumber}`}, madeByMe: true})

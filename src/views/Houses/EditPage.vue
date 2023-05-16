@@ -31,36 +31,32 @@
   const house = computed(() => storeProperties.propertyDetails)
 
   let formValues = reactive({
-    ...house.value,
     streetName: house.value?.location.street.split(' ')[0], 
-    houseNumber: house.value?.location.street.split(' ')[1],
-  }
-  //     image: String,
-  //     price: Number,
-  //     rooms: {
-  //       bedrooms: Number,
-  //       bathrooms: Number
-  //     },
-  //     size: Number,
-  //     description: String,
-  //     location: {
-  //       street: String,
-  //       city: String,
-  //       zip: String
-  //     },
-  //     createdAt: String,
-  //     constructionYear: Number,
-  //     hasGarage: Boolean,
-  //   },
-  //   handleSubmit: Function,
-  //   buttonText: String
-  // }
-  )
+        houseNumber: house.value?.location.street.split(' ')[1],
+      image: house.value?.image,
+      price: house.value?.price,
+      rooms: {
+        bedrooms: house.value?.rooms.bedrooms,
+        bathrooms: house.value?.rooms.bathrooms,
+      },
+      size: house.value?.size,
+      description: house.value?.description,
+      location: {
 
+        street: house.value?.location.street,
+        city: house.value?.location.city,
+        zip: house.value?.location.zip,
+      },
+      createdAt: house.value.createdAt,
+      constructionYear: house.value?.constructionYear,
+      hasGarage: house.value?.hasGarage,
+  }
+  ) 
   const router = useRouter();
 
-  async function handleSubmit(formData, houseImageFile) {
-    const savedHouse = await storeProperties.updateHouse(formData, houseImageFile, house.value.id)
+  async function handleSubmit(formData) {
+    console.log('id: ', house.value.id)
+    const savedHouse = await storeProperties.updateHouse(formData, house.value.id)
     router.push({name: DETAIL_PAGE, params: {id: savedHouse.id}})
   }
 
@@ -72,7 +68,6 @@
     background-image: url("@/assets/background.jpg");
     background-repeat: no-repeat;
     background-size: 132%;
-    /* background-position: right -100px bottom; */
     background-position: right;
   }
 
